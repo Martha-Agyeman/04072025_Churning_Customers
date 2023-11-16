@@ -6,7 +6,12 @@ import pickle
 
 st.title('Customer Churn Predictor')
 
-model_path = r"C:/Users/Martha Agyeman/Desktop/Intro to AI/finalModel_mlp.pkl"
+
+
+import os
+
+# Construct the file path
+model_path = os.path.join('C:', 'Users', 'Martha Agyeman', 'Desktop', 'Intro to AI', 'finalModel_mlp.pkl')
 md = pickle.load(open(model_path, 'rb'))
 
 
