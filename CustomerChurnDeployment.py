@@ -5,14 +5,9 @@ import pickle
 
 st.title('Customer Churn Predictor')
 
-model_path = "C:/Users/Martha Agyeman/Downloads/finalChurnModel_mlp.pkl"
+model = "C:/Users/Martha Agyeman/Downloads/finalChurnModel_mlp.pkl"
 
-try:
-    md = pickle.load(open(model_path, 'rb'))
-except Exception as e:
-    st.error(f"Error loading the model: {e}")
-
-
+md = pickle.load(open(model, 'rb'))
 
 
 SeniorCitizen= st.number_input('SeniorCitizen: (Enter 0 or 1)')
