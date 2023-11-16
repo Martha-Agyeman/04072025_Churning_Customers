@@ -6,7 +6,7 @@ import pickle
 
 st.title('Customer Churn Predictor')
 
-model_path = r"https://github.com/Martha-Agyeman/04072025_Churning_Customers/blob/main/finalModel_mlp.pkl"
+model_path = r"C:/Users/Martha Agyeman/Desktop/Intro to AI/finalModel_mlp.pkl"
 md = pickle.load(open(model_path, 'rb'))
 
 
