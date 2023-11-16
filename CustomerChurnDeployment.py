@@ -1,15 +1,16 @@
 import streamlit as st
-from streamlit import runtime 
 import pandas as pd
 import numpy as np
 import pickle
 
 st.title('Customer Churn Predictor')
 
+model_path = "C:/Users/Martha Agyeman/Downloads/finalChurnModel_mlp.pkl"
 
-
-model_path = r"C:/Users/Martha Agyeman/Downloads/finalChurnModel_mlp.pkl"
-md = pickle.load(open(model_path, 'rb'))
+try:
+    md = pickle.load(open(model_path, 'rb'))
+except Exception as e:
+    st.error(f"Error loading the model: {e}")
 
 
 
@@ -34,13 +35,8 @@ PaperlessBilling= st.text_input('PaperlessBilling (Enter Yes or No)')
 PaymentMethod= st.text_input('PaymentMethod (Enter Electronic check, Mailed check, Bank transfer (automatic) or Credic card (automatic))')
 TotalCharges= st.text_input('Total Charges (Enter a number)')
 
-
-prediction = md.predict([[SeniorCitizen, tenure, MonthlyCharges, gender, Partner,
-       Dependents, PhoneService, MultipleLines, InternetService,
-       OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport,
-       StreamingTV, StreamingMovies, Contract, PaperlessBilling,
-       PaymentMethod, TotalCharges]])
-
-
 if st.button('Predict'):
+    input_data = np.array([[SeniorCitizen, tenure, MonthlyCharges, ...]])
+    prediction = md.predict(input_data)
+
     st.write("The predicted churn for this customer is ", prediction[0])
